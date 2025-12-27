@@ -1,39 +1,27 @@
-import java.util.Scanner;
+import interfaces.IWork;
+import interfaces.IStudy;
 
 public class Main {
-
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Student s = new Student(1, "Medina", true, 3.8f);
 
-        System.out.print("Enter ID: ");
-        int id = sc.nextInt();
-        sc.nextLine();
+        Human h = new Employee(2, "Ayan", true, "IT", 300000);
 
-        System.out.print("Enter full name: ");
-        String name = sc.nextLine();
+        IWork w = new Employee(3, "Ali", true, "Finance", 400000);
+        IStudy st = new Employee(4, "Dana", true, "HR", 280000);
 
-        System.out.print("Is active (true/false): ");
-        boolean active = sc.nextBoolean();
+        s.study();
+        s.passExam();
+        System.out.println("GPA: " + s.getGpa());
+        System.out.println("Type: " + s.getType());
 
-        Human human = new Human(id, name, active);
-        human.printStatus();
-        System.out.println("Type: " + human.getType());
+        System.out.println("Type: " + h.getType());
 
-        Employee emp = new Employee(101, "Arman S.", true,
-                "IT Department", 4200.75f);
-        emp.printStatus();
-        System.out.println("Type: " + emp.getType());
-        System.out.println("Company: " + Employee.companyName);
+        w.work();
+        w.receiveSalary();
 
-        Student st = new Student(202, "Dana K.", true,
-                "Cybersecurity", 3.6f);
-        st.printStatus();
-        System.out.println("Type: " + st.getType());
-
-        st.setRating(3.9f);
-        System.out.println("Updated rating: " + st.getRating());
-
-        sc.close();
+        st.study();
+        st.passExam();
     }
 }

@@ -1,27 +1,30 @@
-public class Student extends Human {
+import interfaces.IStudy;
 
-    private String faculty;
-    private float rating;
+public final class Student extends Human implements IStudy {
 
-    public Student(int id, String fullName, boolean active,
-                   String faculty, float rating) {
+    private final float gpa;
+
+    public Student(int id, String fullName, boolean active, float gpa) {
         super(id, fullName, active);
-        this.faculty = faculty;
-        this.rating = rating;}
+        this.gpa = gpa;
+    }
+
+    public final float getGpa() {
+        return gpa;
+    }
+
+    @Override
+    public void study() {
+        System.out.println(fullName + " is studying");
+    }
+
+    @Override
+    public void passExam() {
+        System.out.println(fullName + " passed the exam");
+    }
 
     @Override
     public String getType() {
-        return "Student";}
-
-    public String getFaculty() {
-        return faculty;}
-
-    public void setFaculty(String faculty) {
-        this.faculty = faculty;}
-
-    public float getRating() {
-        return rating;}
-
-    public void setRating(float rating) {
-        this.rating = rating;}
+        return "Student";
+    }
 }
